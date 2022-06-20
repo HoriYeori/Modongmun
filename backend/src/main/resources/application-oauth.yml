@@ -6,16 +6,16 @@ spring:
         registration:
           # Google
           google:
-            client-id: 941268851989-pvjttihc4477vrsjkt2r31ihcmllc19v.apps.googleusercontent.com
-            client-secret: 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
+            client-id: # Google-client-ID
+            client-secret: # Google-client-secret
             scope:
               - profile
               - email
 
           # Naver
           naver:
-            client-id: fSWW1KMhIjQNADsqHLsa
-            client-secret: sJAEG51Tin
+            client-id: # Naver-client-ID
+            client-secret: # Naver-client-secert
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             authorization-grant-type: authorization_code
             scope:
@@ -26,8 +26,8 @@ spring:
 
           # Kakao
           kakao:
-            client-id: 3ed5beb58296c4773d28c3434fcc5a64
-            client-secret: aYDHJ7wzGEdtE0ZvoCLvz4PKxPzm97nP
+            client-id: # Kakao-client-ID
+            client-secret: # Kakao-client-secret
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             authorization-grant-type: authorization_code
             client-authentication-method: POST  # https://devtalk.kakao.com/t/topic/113641/3 을 참조함. (검색 : Google - attempting to retrieve the OAuth 2.0 Access Token Response: 401)

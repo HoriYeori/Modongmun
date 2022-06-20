@@ -2,8 +2,8 @@
 cloud:
   aws:
     credentials:
-      accessKey: AKIAQ6Z7ET3L4EQCJ3TR
-      secretKey: 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
+      accessKey: # AWS-EC2-access-key
+      secretKey: # AWS-EC2-secret-key
     s3:
       bucket: modongmun
     region:

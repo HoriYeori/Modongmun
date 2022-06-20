@@ -21,8 +21,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://3.36.49.189:3606/dongmun-forest?serverTimezone=Asia/Seoul
-    username: modongmun
-    password: modongmun1234!
+    username: # Datasource username
+    password: # Datasource password
 
   ### JPA
   jpa:
