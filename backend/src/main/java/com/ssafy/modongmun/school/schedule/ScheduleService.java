@@ -1,5 +1,6 @@
 package com.ssafy.modongmun.school.schedule;
 
+import com.ssafy.modongmun.config.auth.UserPrincipal;
 import com.ssafy.modongmun.school.School;
 import com.ssafy.modongmun.school.SchoolRepository;
 import com.ssafy.modongmun.school.schedule.dto.ScheduleDto;
@@ -23,9 +24,11 @@ public class ScheduleService {
     private final UserRepository userRepository;
 
     @Transactional(rollbackFor = Exception.class)
-    public ScheduleDto registerSchedule(ScheduleDto scheduleRegisterDto) {
-        School school = schoolRepository.findById(scheduleRegisterDto.getSchoolId()).orElse(null);
-        User user = userRepository.findById(scheduleRegisterDto.getUserId()).orElse(null);
+    public ScheduleDto registerSchedule(ScheduleDto scheduleRegisterDto, UserPrincipal loginUser) {
+        School school = schoolRepository.findById(scheduleRegisterDto.getSchoolId())
+                .orElseThrow(() -> new IllegalArgumentException("Illegal school ID !"));
+        User user = userRepository.findById(Long.parseLong(loginUser.getName()))
+                .orElseThrow(() -> new RuntimeException("Invalid authenticated user"));
 
         Schedule schedule = Schedule.builder()
                 .school(school)

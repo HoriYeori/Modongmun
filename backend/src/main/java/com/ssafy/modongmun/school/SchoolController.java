@@ -25,7 +25,7 @@ public class SchoolController {
     @GetMapping("/school/schools")
     public ResponseEntity<List<SchoolDto>> searchSchool(@RequestParam("keyword") String keyword) {
         List<SchoolDto> schoolDtoList = schoolService.searchSchool(keyword);
-        return new ResponseEntity<List<SchoolDto>>(schoolDtoList, HttpStatus.OK);
+        return new ResponseEntity<>(schoolDtoList, HttpStatus.OK);
     }
 
 }

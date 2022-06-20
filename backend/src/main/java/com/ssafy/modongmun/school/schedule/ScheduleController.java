@@ -1,5 +1,7 @@
 package com.ssafy.modongmun.school.schedule;
 
+import com.ssafy.modongmun.config.auth.LoginUser;
+import com.ssafy.modongmun.config.auth.UserPrincipal;
 import com.ssafy.modongmun.school.schedule.dto.ScheduleDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,8 +18,8 @@ public class ScheduleController {
     private final ScheduleService scheduleService;
 
     @PostMapping("/schedule/schedules")
-    public ResponseEntity<ScheduleDto> registerSchedule(@RequestBody ScheduleDto scheduleRegisterDto) {
-        ScheduleDto savedSchedule = scheduleService.registerSchedule(scheduleRegisterDto);
+    public ResponseEntity<ScheduleDto> registerSchedule(@RequestBody ScheduleDto scheduleRegisterDto, @LoginUser UserPrincipal loginUser) {
+        ScheduleDto savedSchedule = scheduleService.registerSchedule(scheduleRegisterDto, loginUser);
         return new ResponseEntity<ScheduleDto>(savedSchedule, HttpStatus.OK);
     }
 
@@ -35,7 +37,8 @@ public class ScheduleController {
 
     @PatchMapping("/schedule/schedules/{schedule_id}")
     public ResponseEntity<ScheduleDto> modifySchedule(@PathVariable("schedule_id") Long scheduleId,
-                                            @RequestBody ScheduleDto scheduleDto){
+                                                      @RequestBody ScheduleDto scheduleDto,
+                                                      @LoginUser UserPrincipal loginUser){
         ScheduleDto modifiedSchedule = scheduleService.modifySchedule(scheduleId, scheduleDto);
         return new ResponseEntity<ScheduleDto>(modifiedSchedule, HttpStatus.OK);
     }
